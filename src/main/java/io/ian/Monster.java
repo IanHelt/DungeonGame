@@ -21,8 +21,8 @@ public class Monster {
 
     public int turboMaul() {
         int bigDmgTaken;
-        int dmgVariation = rng.nextInt((3)-2);
-        bigDmgTaken = (attack + dmgVariation) + 5;
+        int dmgVariation = rng.nextInt(9);
+        bigDmgTaken = (attack + dmgVariation);
         System.out.println("You took " + bigDmgTaken + " damage!");
         return bigDmgTaken;
     }

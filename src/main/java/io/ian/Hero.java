@@ -47,4 +47,6 @@ public class Hero {
     public void setHealth(int health) {
         this.health = health;
     }
+
+
 }

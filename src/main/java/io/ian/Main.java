@@ -13,8 +13,20 @@ public class Main {
                 System.out.println("Nobody here");
             } else {
                 System.out.println("can you smell the meal Dwayne 'Cold Rock' Steve Johnson is preparing?");
-                Monster monster = new Monster();;
-                //boolean fleeAttempt = false;
+                Monster monster = new Monster();
+                while (true){
+                    if (theRock.getHealth() <= 0){
+                        break;
+                    }
+                    Boolean fleeAttempt = theRock.flee();
+                    if (fleeAttempt){
+                        break;
+                    } else {
+                    int monsterCritical =  monster.turboMaul();
+                    theRock.setHealth((theRock.getHealth() - monsterCritical));
+                    }
+                }
+                 /*
                 while (monster.getHealth() > 0) {
                     if (theRock.getHealth() <= 0){
                         break;
@@ -26,6 +38,7 @@ public class Main {
                         theRock.setHealth((theRock.getHealth() - monsterAttack));
                     }
                 }
+                */
             }
             if (theRock.getHealth() <= 0) {
                 System.out.println("Pour one out for my fam, he lasted " + i + " turns.");
