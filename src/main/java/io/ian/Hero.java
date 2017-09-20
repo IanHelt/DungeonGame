@@ -1,44 +1,14 @@
 package io.ian;
 
-import java.util.Random;
 
-public class Hero {
+import interfaces.HeroActions;
 
-    Random rng = new Random();
+public class Hero implements HeroActions{
 
-    private int health = 20;
-    private int attack = 10;
-    private int accuracy = 10;
-    private int evasion = 10;
-
-    public Hero() {
-
-    }
-
-    public int fight() {
-        int dmgDone = 0;
-        int hitCheck = rng.nextInt(15);
-        int dmgVariation = rng.nextInt((10)-5);
-        if (this.accuracy >= hitCheck) {
-            dmgDone = this.attack + dmgVariation;
-            System.out.println("Hit for " + dmgDone);
-        } else {
-            System.out.println("Miss!");
-        }
-        return dmgDone;
-    }
-
-    public boolean flee() {
-        boolean fleeBool = false;
-        int fleeCheck = rng.nextInt(20);
-        if (evasion >= fleeCheck){
-            System.out.println("Evasion Successful!");
-            fleeBool = true;
-        } else {
-            System.out.println("Evasion Failed!");
-        }
-        return fleeBool;
-    }
+    protected int health = 20;
+    protected int attack = 10;
+    protected int accuracy = 10;
+    protected int evasion = 10;
 
     public int getHealth() {
         return this.health;
@@ -48,5 +18,15 @@ public class Hero {
         this.health = health;
     }
 
+    public int fight(String monsterType) {
+        return 0;
+    }
 
+    public boolean flee(String monsterType) {
+        return false;
+    }
+
+    public String getType() {
+        return null;
+    }
 }

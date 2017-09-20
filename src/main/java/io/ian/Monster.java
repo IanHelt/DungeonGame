@@ -1,31 +1,12 @@
 package io.ian;
 
-import java.util.Random;
 
-public class Monster {
+import interfaces.MonsterActions;
 
-    Random rng = new Random();
-    private int attack = 3;
-    private int health = 20;
+public class Monster implements MonsterActions {
 
-    public Monster() {
-    }
-
-    public int maul() {
-        int dmgTaken;
-        int dmgVariation = rng.nextInt((5)-3);
-        dmgTaken = attack + dmgVariation;
-        System.out.println("You took " + dmgTaken + " damage!");
-        return dmgTaken;
-    }
-
-    public int turboMaul() {
-        int bigDmgTaken;
-        int dmgVariation = rng.nextInt(9);
-        bigDmgTaken = (attack + dmgVariation);
-        System.out.println("You took " + bigDmgTaken + " damage!");
-        return bigDmgTaken;
-    }
+    protected int attack = 3;
+    protected int health = 20;
 
     public int getHealth() {
         return this.health;
@@ -33,5 +14,17 @@ public class Monster {
 
     public void setHealth(int health) {
         this.health = health;
+    }
+
+    public String getType() {
+        return null;
+    }
+
+    public int maul(String heroType) {
+        return 0;
+    }
+
+    public int turboMaul() {
+        return 0;
     }
 }
