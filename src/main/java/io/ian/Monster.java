@@ -5,8 +5,8 @@ import interfaces.MonsterActions;
 
 public class Monster implements MonsterActions {
 
-    protected int attack = 3;
-    protected int health = 20;
+    protected int attack = 1;
+    protected int health = 30;
 
     public int getHealth() {
         return this.health;

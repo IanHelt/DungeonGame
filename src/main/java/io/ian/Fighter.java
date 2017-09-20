@@ -16,7 +16,7 @@ public class Fighter extends Hero implements HeroActions {
         System.out.println("You swing YOUR AXE at the " + monsterType);
         int dmgDone = 0;
         int hitCheck = rng.nextInt(15);
-        int dmgVariation = rng.nextInt((10)-5);
+        int dmgVariation = rng.nextInt(10);
         if (monsterType.equals("Ogre")){
             dmgVariation = 10;
         }

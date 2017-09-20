@@ -16,7 +16,7 @@ public class Rogue extends Hero implements HeroActions{
         System.out.println("You attempt a quick stab on the " + monsterType);
         int dmgDone = 0;
         int hitCheck = rng.nextInt(15);
-        int dmgVariation = rng.nextInt((6)-3);
+        int dmgVariation = rng.nextInt((10)-5);
         if (this.accuracy >= hitCheck) {
             dmgDone = this.attack + dmgVariation;
             System.out.println("Hit for " + dmgDone);
@@ -30,7 +30,7 @@ public class Rogue extends Hero implements HeroActions{
         boolean fleeBool = false;
         int fleeCheck = rng.nextInt(14);
         if (monsterType.equals("Flying Chimp")){
-            fleeCheck = rng.nextInt(18);
+            fleeCheck = rng.nextInt(20);
         }
         if (evasion >= fleeCheck){
             System.out.println("Evasion Successful!");

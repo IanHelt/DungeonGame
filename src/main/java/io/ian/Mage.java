@@ -16,9 +16,9 @@ public class Mage extends Hero implements HeroActions {
         System.out.println("You conjure the sonic power of Pearl Jam at the " + monsterType);
         int dmgDone = 0;
         int hitCheck = rng.nextInt(15);
-        int dmgVariation = rng.nextInt((10)-5);
+        int dmgVariation = rng.nextInt(10);
         if (monsterType.equals("Lich") || monsterType.equals("Flying Chimp")){
-            dmgVariation = 5;
+            dmgVariation = 10;
         }
         if (this.accuracy >= hitCheck) {
             dmgDone = this.attack + dmgVariation;

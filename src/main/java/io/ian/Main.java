@@ -12,7 +12,7 @@ public class Main {
         System.out.println("1 - Fighter");
         System.out.println("2 - Mage");
         System.out.println("3 - Rogue");
-        System.out.println("Other inputs default to Figher");
+        System.out.println("Other inputs default to Fighter");
 
         int heroSelector = scanner.nextInt();
         Hero theRock = getHero(heroSelector);
@@ -20,58 +20,59 @@ public class Main {
 
         for (int i = 1; i <= 10; i++) {
             int encounterCheck = rng.nextInt(10);
-             if (encounterCheck > 5) {
+             if (encounterCheck > 6) {
                 System.out.println("Nobody here");
             } else {
-                Monster monster = getMonster(rng.nextInt(3));
-                String monsterType = monster.getType();
-
+                 Monster monster = getMonster(rng.nextInt(3));
+                 String monsterType = monster.getType();
+                 Boolean fleeCheck = false;
                  System.out.println("You encounter a hostile " + monsterType + ", it has not noticed you yet");
-                 System.out.println("1 - Fight");
-                 System.out.println("2 - Flee");
 
-                int userChoice = scanner.nextInt();
-
-                 if (userChoice == 1){
-                     while (monster.getHealth() > 0) {
-                         if (theRock.getHealth() <= 0){
-                             break;
-                         }
-                         int heroAttack = theRock.fight(monsterType);
-                         monster.setHealth((monster.getHealth() - heroAttack));
-                         if (monster.getHealth() > 0) {
-                             int monsterAttack = monster.maul(heroType);
-                             theRock.setHealth((theRock.getHealth() - monsterAttack));
-                         }
+                 while (true) {
+                     if (theRock.getHealth() <= 0) {
+                         break;
                      }
-                 } else if (userChoice == 2) {
-                     while (true){
-                         if (theRock.getHealth() <= 0){
-                             break;
-                         }
-                         Boolean fleeAttempt = theRock.flee(monsterType);
-                         if (fleeAttempt){
-                             break;
-                         } else {
-                             int monsterCritical =  monster.turboMaul();
-                             theRock.setHealth((theRock.getHealth() - monsterCritical));
-                         }
+                     if (monster.getHealth() <= 0) {
+                         System.out.println("You have slain the " + monsterType);
+                         break;
                      }
-                 } else {
-                     System.out.println("Your indecision has cost you your advantage, the monster attacks!");
-                     while (monster.getHealth() > 0) {
-                         if (monster.getHealth() > 0) {
-                             int monsterAttack = monster.maul(heroType);
-                             theRock.setHealth((theRock.getHealth() - monsterAttack));
+                     if (fleeCheck){
+                         break;
+                     }
+                     System.out.println("1 - Fight");
+                     System.out.println("2 - Flee");
+                     int userChoice = scanner.nextInt();
+                     if (userChoice == 1) {
+                             int heroAttack = theRock.fight(monsterType);
+                             monster.setHealth((monster.getHealth() - heroAttack));
+                             if (monster.getHealth() > 0) {
+                                 int monsterAttack = monster.maul(heroType);
+                                 theRock.setHealth((theRock.getHealth() - monsterAttack));
+                             }
+                     } else if (userChoice == 2) {
+                             Boolean fleeAttempt = theRock.flee(monsterType);
+                             if (fleeAttempt) {
+                                 fleeCheck = true;
+                             } else {
+                                 int monsterCritical = monster.turboMaul();
+                                 theRock.setHealth((theRock.getHealth() - monsterCritical));
+                             }
+                     } else {
+                         System.out.println("Your indecision has cost you your advantage, the monster attacks!");
+                         while (monster.getHealth() > 0) {
+                             if (monster.getHealth() > 0) {
+                                 int monsterAttack = monster.maul(heroType);
+                                 theRock.setHealth((theRock.getHealth() - monsterAttack));
+                             }
+                             if (theRock.getHealth() <= 0) {
+                                 break;
+                             }
+                             int heroAttack = theRock.fight(monsterType);
+                             monster.setHealth((monster.getHealth() - heroAttack));
                          }
-                         if (theRock.getHealth() <= 0){
-                             break;
-                         }
-                         int heroAttack = theRock.fight(monsterType);
-                         monster.setHealth((monster.getHealth() - heroAttack));
                      }
                  }
-            }
+             }
             if (theRock.getHealth() <= 0) {
                 System.out.println("Pour one out for my fam, he lasted " + i + " turns.");
                 break;

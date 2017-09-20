@@ -13,18 +13,18 @@ public class FlyingChimp extends Monster implements MonsterActions{
     }
 
     public int maul(String heroType) {
-        System.out.println("this chimp ain't monkeying around");
+        System.out.println("This chimp ain't monkeying around");
         int dmgTaken;
-        int dmgVariation = rng.nextInt((5)-3);
-        dmgTaken = attack + dmgVariation;
+        int dmgVariation = rng.nextInt(5);
+        dmgTaken = (attack + dmgVariation);
         System.out.println("You took " + dmgTaken + " damage!");
         return dmgTaken;
     }
 
     public int turboMaul() {
-        System.out.println("he'S GOT A GUN");
+        System.out.println("wOW that Chimp is mad");
         int bigDmgTaken;
-        int dmgVariation = rng.nextInt(9);
+        int dmgVariation = rng.nextInt(10);
         bigDmgTaken = (attack + dmgVariation);
         System.out.println("You took " + bigDmgTaken + " damage!");
         return bigDmgTaken;
